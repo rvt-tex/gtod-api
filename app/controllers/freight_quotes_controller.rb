@@ -1,0 +1,2 @@
+class FreightQuotesController < ApplicationController
+end
