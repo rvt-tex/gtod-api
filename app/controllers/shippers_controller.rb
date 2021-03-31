@@ -2,14 +2,13 @@ class ShippersController < ApplicationController
 
     def index
         shippers = Shipper.all 
-        render json: shippers, include: [:freight_quotes]
-        # render json: PinSerializer.new(pins)
+        render json: ShipperSerializer.new(shippers)
     end 
 
     def create 
         shipper = Shipper.new(shipper_params)
         if shipper.save 
-            # render json: FreightQuoteSerializer.new(freight_quote)
+            render json: ShipperSerializer.new(shipper)
         else 
             render json: {errors: shipper.errors.full_messages}, status: :unprocessible_entity
         end 
@@ -20,7 +19,7 @@ class ShippersController < ApplicationController
         if shipper.destroy
             shippers = Shipper.all 
             render json: shippers
-            # render json: FreightQuoteSerializer.new(freight_quotes)
+            render json: ShipperSerializer.new(shippers)
         else
             render json: { message: "error"}  
         end 
