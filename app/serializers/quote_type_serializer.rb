@@ -1,4 +1,5 @@
 class QuoteTypeSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
+  
+  attributes :name, :shipper
 end
