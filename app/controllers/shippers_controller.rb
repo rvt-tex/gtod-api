@@ -5,6 +5,10 @@ class ShippersController < ApplicationController
         render json: ShipperSerializer.new(shippers)
     end 
 
+    def show 
+        @shipper = Shipper.find_by_id(params[:id])
+        render json: @shipper
+    end 
     def create 
         shipper = Shipper.new(shipper_params)
         if shipper.save 
@@ -32,6 +36,6 @@ class ShippersController < ApplicationController
     end 
 
     def find_shipper
-        @pshipper = Shipper.find_by_id(params[:id])
+        @shipper = Shipper.find_by_id(params[:id])
     end
 end
