@@ -5,6 +5,11 @@ class FreightQuotesController < ApplicationController
         render json: FreightQuoteSerializer.new(freight_quotes)
     end 
 
+    def show 
+        @freight_quote = FreightQuote.find_by_id(params[:id])
+        render json: @freight_quote
+    end 
+
     def create 
         freight_quote = FreightQuote.new(freight_quote_params)
         if freight_quote.save 
@@ -31,6 +36,6 @@ class FreightQuotesController < ApplicationController
     end 
 
     def find_freight_quote
-        @pfreight_quote = FreightQuote.find_by_id(params[:id])
+        @freight_quote = FreightQuote.find_by_id(params[:id])
     end
 end

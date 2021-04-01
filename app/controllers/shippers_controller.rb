@@ -9,6 +9,7 @@ class ShippersController < ApplicationController
         @shipper = Shipper.find_by_id(params[:id])
         render json: @shipper
     end 
+    
     def create 
         shipper = Shipper.new(shipper_params)
         if shipper.save 
